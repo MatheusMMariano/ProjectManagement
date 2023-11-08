@@ -12,6 +12,9 @@
     <label>Project Management</label>
     <navType>Standard</navType>
     <tabs>Project_Management</tabs>
+    <tabs>Project__c</tabs>
+    <tabs>Milestone__c</tabs>
+    <tabs>TodoItem__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Project_Management_UtilityBar</utilityBar>
 </CustomApplication>
