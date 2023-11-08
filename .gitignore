@@ -45,3 +45,4 @@ $RECYCLE.BIN/
 **/venv/
 
 **/All.listView-meta.xml
+package.xml
