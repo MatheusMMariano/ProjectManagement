@@ -1,0 +1,63 @@
+<template>
+
+    <template if:true={loading}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+
+    <template if:true={projects}>
+        <lightning-accordion class="accordion" onsectiontoggle={handleSectionToggle} active-section-name={activeSections} allow-multiple-sections-open>
+            
+            <template iterator:project={projects}>
+                <div key={project.value.id} class="slds-var-p-around_medium lgc-bg">
+                    <lightning-progress-bar value={project.value.percentageComplete} size="large" variant="circular"></lightning-progress-bar>
+                    <lightning-accordion-section name={project.value.id} label={project.value.label} data-name={project.value.name} data-status={project.value.status}>                    
+                    
+                        <template iterator:milestone={project.value.milestones}>
+                            <div key={milestone.value.id}>
+                                <lightning-accordion-section name={milestone.value.id} label={milestone.value.label}>
+                                    
+                                    <template iterator:todoitem={milestone.value.todoItems}>
+                                        <lightning-input key={todoitem.value.id} class="slds-p-left_xx-large" checked={todoitem.value.checked}
+                                                        type="checkbox" data-id={todoitem.value.id} label={todoitem.value.label} 
+                                                        onchange={handleCheckboxChange}>
+                                        </lightning-input>
+                                    </template>
+    
+                                    <div class="slds-grid slds-grid_vertical-align-end">
+                                        <div class="slds-col">
+                                            <span><lightning-input data-index={milestone.value.id} type="text" label="New To do Item"></lightning-input></span>
+                                        </div>
+                                        <div class="slds-col">
+                                            <span><lightning-button variant="brand-outline" label="Add" data-index={milestone.value.id} onclick={handleClickCreateNewTodoItem} class="slds-m-left_x-small"></lightning-button></span>
+                                        </div>
+                                    </div>
+                                </lightning-accordion-section>
+                            </div>
+                        </template>
+
+                        <div class="slds-grid slds-grid_vertical-align-end">
+                                <div class="slds-col">
+                                    <span><lightning-input data-index={project.value.id} type="text" label="New Milestone"></lightning-input></span>
+                                </div>
+                                <div class="slds-col">
+                                    <span><lightning-button variant="brand-outline" label="Add" data-index={project.value.id} onclick={handleClickCreateNewMilestone} class="slds-m-left_x-small"></lightning-button></span>
+                                </div>
+                        </div>
+                        
+                    </lightning-accordion-section>
+                </div>
+                
+            </template>
+        </lightning-accordion>
+    </template>
+
+    <div class="slds-grid slds-grid_vertical-align-end">
+        <div class="slds-col">
+            <span><lightning-input type="text" label="New Project" data-index="project"></lightning-input></span>
+        </div>
+        <div class="slds-col">
+            <span><lightning-button variant="brand-outline" label="Add" onclick={handleClickCreateNewProject} class="slds-m-left_x-small"></lightning-button></span>
+        </div>
+    </div>
+    
+</template>

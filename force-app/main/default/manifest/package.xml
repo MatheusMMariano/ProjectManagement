@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Project_Management</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Milestone__c</members>
+        <members>Project__c</members>
+        <members>TodoItem__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Milestone__c.Percentage_complete__c</members>
+        <members>Milestone__c.Project__c</members>
+        <members>Milestone__c.Status__c</members>
+        <members>Project__c.End_Date__c</members>
+        <members>Project__c.Status__c</members>
+        <members>Project__c.Percentage_complete__c</members>
+        <members>Project__c.Start_Date__c</members>
+        <members>TodoItem__c.Milestone__c</members>
+        <members>TodoItem__c.Status__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Project_Management</members>
+        <name>Flexipage</name>
+    </types>
+    <types>
+        <members>To_do_Item_Percentage_Calculation</members>
+        <members>Milestone_Percentage_Calculation</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Status</members>
+        <name>GlobalValueSet</name>
+    </types>
+    <types>
+        <members>Milestone__c-Milestone Layout</members>
+        <members>Project__c-Project Layout</members>
+        <members>TodoItem__c-To do Item Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Milestone__c</members>
+        <members>Project__c</members>
+        <members>TodoItem__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Project_Management</members>
+        <name>PermissionSet</name>
+    </types>
+    <version>59.0</version>
+</Package>
