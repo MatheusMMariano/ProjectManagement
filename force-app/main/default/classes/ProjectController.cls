@@ -98,29 +98,6 @@ public with sharing class ProjectController {
         return JSON.serialize(getAllProjectsAsJSON());
     }
 
-    @AuraEnabled
-    public static Project__c createProject(String name, String description, Date startDate, Date endDate) {
-        Project__c project = new Project__c(Name = name, Description__c = description, Start_Date__c = startDate, End_Date__c = endDate);
-        insert project;
-        return project;
-    }
-
-    @AuraEnabled
-    public static void updateProject(String projectId, String name, String description, Date startDate, Date endDate) {
-        Project__c project = [SELECT Id FROM Project__c WHERE Id = :projectId];
-        project.Name = name;
-        project.Description__c = description;
-        project.Start_Date__c = startDate;
-        project.End_Date__c = endDate;
-        update project;
-    }
-
-    @AuraEnabled
-    public static void deleteProject(String projectId) {
-        Project__c project = [SELECT Id FROM Project__c WHERE Id = :projectId];
-        delete project;
-    }
-
     private static TodoItem__c getTodoItem(String recordId){
         return [SELECT Id, Status__c FROM TodoItem__c WHERE Id =: recordId];
     }
@@ -140,7 +117,7 @@ public with sharing class ProjectController {
 
     @AuraEnabled
     public static void createNewMilestone(String name, String projectId){
-        Milestone__c m =  new Milestone__c(Name = 'Milestone '+name, Status__c = 'Not Started', Project__c = projectId);
+        Milestone__c m =  new Milestone__c(Name = name.contains('Milestone') ? name : 'Milestone '+name, Status__c = 'Not Started', Project__c = projectId);
         insert m;
 
         createNewTodoItem(name, m.Id);
@@ -153,7 +130,6 @@ public with sharing class ProjectController {
 
         createNewMilestone(name, p.Id);
     }
-
 
     public class Project{
         public String id {get; set;}
